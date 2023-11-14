@@ -13,8 +13,8 @@ public final class DataBaseContratct {
         public static final String COLUMN_TITLE = "titulo";
         public static final String COLUMN_URL = "endereco";
         public static final String COLUMN_TAG_ID = "tag_id";
-        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " + _ID + " INTEGER PRIMARY KEY, " + COLUMN_TITLE + " TEXT NOT NULL, " +
-                COLUMN_URL + " TEXT, " + COLUMN_TAG_ID + " INTEGER " + "FOREING_KEY (" + COLUMN_TAG_ID + ") REFERENCES " + TableTag.TABLE_NAME + " (" + TableTag._ID + ") )";
+        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " + _ID + " INTEGER PRIMARY KEY, " + COLUMN_TITLE + " TEXT NOT NULL, " + COLUMN_URL + " TEXT, " + COLUMN_TAG_ID + " INTEGER, " + "FOREIGN KEY (" + COLUMN_TAG_ID + ") REFERENCES " + TableTag.TABLE_NAME + "(" + TableTag._ID + ") )";
+
     }
 
     public static class TableTag implements BaseColumns{

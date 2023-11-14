@@ -50,4 +50,32 @@ public class SiteDao {
         cursor.close();
         return list;
     }
+
+    public boolean update(Site siteOld, TagSite siteNew){
+        boolean answer;
+        ContentValues values = new ContentValues();
+        values.put(DataBaseContratct.TableSite.COLUMN_TITLE, siteNew.getTag());
+
+        String where = DataBaseContratct.TableSite.COLUMN_TITLE + " = ? ";
+
+        String whereArgs[] = {siteOld.getTitle()};
+
+        try {
+            mDataBase = mHelper.getWritableDatabase();
+            mDataBase.update(DataBaseContratct.TableSite.TABLE_NAME, values, where, whereArgs);
+        }catch (Exception e){
+            answer = false;
+        }
+        return true;
+    }
+
+    public void delete(Site site){
+        String where = DataBaseContratct.TableSite.COLUMN_TITLE + "";
+        String whereArgs[] = {site.getTitle()};
+
+        mDataBase = mHelper.getWritableDatabase();
+        mDataBase.delete(DataBaseContratct.TableSite.TABLE_NAME, where, whereArgs);
+
+        mDataBase.close();
+    }
 }
